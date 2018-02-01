@@ -1,2 +1,1 @@
-# omegagit简介
-平时学习python的相关代码
+`生产XSHELL的sessi
