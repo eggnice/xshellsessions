@@ -6,8 +6,8 @@ import stat
 import sys
 import base64
 import shutil
-#import win32api
-#import win32security
+import win32api
+import win32security
 import xlrd
 import fileinput
 from Crypto.Cipher import ARC4
@@ -104,15 +104,14 @@ def writestring(num, rlist):
     return wstring.strip('\n')
 
 def getkey():
-    pass
-#    "return winsystem key only by win system"
-#    CurrentUserName = win32api.GetUserName()
-#    CurrentComputerName = win32api.GetComputerName()
-#    CurrentUserSID = win32security.LookupAccountName(CurrentComputerName, CurrentUserName)[0]
-#    CurrentuserSIDString = win32security.ConvertSidToStringSid(CurrentUserSID)
-#    return CurrentUserName + CurrentuserSIDString
+    "return winsystem key only by win system"
+    CurrentUserName = win32api.GetUserName()
+    CurrentComputerName = win32api.GetComputerName()
+    CurrentUserSID = win32security.LookupAccountName(CurrentComputerName, CurrentUserName)[0]
+    CurrentuserSIDString = win32security.ConvertSidToStringSid(CurrentUserSID)
+    return CurrentUserName + CurrentuserSIDString
 
-def encrypt(passwd, key='AdministratorS-1-5-21-3147873682-328389277-583645593-500'):
+def encrypt(passwd, key=None):
     "to encrypt passwd by key"
     if not key:
         key = getkey()
@@ -129,14 +128,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
-
